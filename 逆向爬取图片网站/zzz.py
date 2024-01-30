@@ -3,7 +3,6 @@ import time
 
 import requests
 import json
-import pprint
 import execjs
 
 url = "https://api.zzzmh.cn/bz/v3/getData"
@@ -39,7 +38,7 @@ for image in images_data_list:
     i = image['i']
     image_url = f"https://api.zzzmh.cn/bz/v3/getUrl/{i}{t}9"
     image_content = requests.get(url=image_url, headers=headers).content
-    with open(f'images/{i}.jpg', 'wb') as f:
+    with open(f'{i}.jpg', 'wb') as f:
         f.write(image_content)
         print(f"{i}.jpg 下载完成")
         time.sleep(0.5)
