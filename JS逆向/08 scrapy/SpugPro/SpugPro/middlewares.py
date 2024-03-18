@@ -88,8 +88,7 @@ class SpugproDownloaderMiddleware:
 
         # 设置一个随机的ua
         request.headers['User-Agent'] = random.choice(self.ua_list)
-        request.headers['Referer'] = 'https://devops.psi-gene.com'
-        request.headers['X-Token'] = '4b6010a01fb7475986cd273b910c12fc'
+        request.headers['Referer'] = 'https://devops.psi-gene.com/'
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
