@@ -62,7 +62,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "NewPro.pipelines.NewproPipeline": 300,
+   "NewPro.pipelines.NewproPipeline": 500,
+   "NewPro.pipelines.JsonPipeline": 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
