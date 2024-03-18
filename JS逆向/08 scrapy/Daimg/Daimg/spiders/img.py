@@ -6,7 +6,7 @@ from scrapy.linkextractors import LinkExtractor
 # 获取全站图片并下载
 class ImgSpider(CrawlSpider):
     name = "img"
-    # allowed_domains = ["www.daimg.com"]
+    allowed_domains = ["www.daimg.com",'img.daimg.com']
     start_urls = ["http://www.daimg.com/pic/%E6%B1%BD%E8%BD%A6-0-0-0-0-0_1.html"]
 
     # 匹配页码link 规则
