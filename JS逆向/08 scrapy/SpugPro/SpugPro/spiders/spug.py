@@ -15,7 +15,7 @@ class SpugSpider(scrapy.Spider):
         # 使用Request子类FormRequest进行请求  自动为post请求
         yield scrapy.FormRequest(
             url=login_url,
-            formdata={'username': 'admin', 'password': 'Admin@1024', 'type': 'default'},
+            formdata={"username":"admin","password":"Admin@1024","type":"default"},
             callback=self.do_start
         )
 
