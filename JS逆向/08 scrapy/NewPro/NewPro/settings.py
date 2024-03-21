@@ -30,7 +30,7 @@ ROBOTSTXT_OBEY = False
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-# COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
@@ -62,8 +62,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "NewPro.pipelines.NewproPipeline": 500,
-   "NewPro.pipelines.JsonPipeline": 300,
+   "NewPro.pipelines.NewproPipeline": 100,
+   "NewPro.pipelines.JsonPipeline": 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+ function  f(){
+     // 修改局部变量，为全局
+     var username = 'yzy'
+     window.username = username
+
+ }
+ f()
+ // 周期执行,每隔一秒钟执行n
+ var ID =setInterval(function (){
+     console.log('hello world')
+ },1000)
+
+// 取消周期执行
+function cancel(){
+     clearInterval(ID)
+}
+</script>
+<button onclick=cancel()>取消</button>
+</body>
+</html>

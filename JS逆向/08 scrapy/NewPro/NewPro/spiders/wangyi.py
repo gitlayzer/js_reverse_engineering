@@ -2,6 +2,7 @@ import scrapy
 from scrapy.http import Request
 from NewPro.items import NewproItem
 
+
 class WangyiSpider(scrapy.Spider):
     name = "wangyi"
     allowed_domains = ["www.163.com"]
@@ -48,13 +49,13 @@ class WangyiSpider(scrapy.Spider):
         # 请求详情页
         item = NewproItem()
         news_content_list = response.xpath('//*[@id="content"]/div[@class="post_body"]/p/text()').extract()
-        content = ','.join([c.strip()for c in news_content_list])
+        content = ','.join([c.strip() for c in news_content_list])
         news_title = response.meta.get('news_title')
         nav_name = response.meta.get('nav_name')
         item['nav_name'] = nav_name
         item['news_title'] = news_title
         item['content'] = content
-        yield  item
+        yield item
 
     def closed(self, spider):
         # self.bro.quit()
