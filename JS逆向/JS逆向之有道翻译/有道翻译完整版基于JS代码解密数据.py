@@ -1,7 +1,7 @@
 # coding: utf-8
 """
 @python version : python3.10
-@file name      : 有道翻译完整版基于JS代码揭秘数据.py
+@file name      : 有道翻译完整版基于JS代码解密数据.py
 @date           : 2024/3/22 16:56
 @author         : ziyang.yang@aliyun.com
 @gitee          : https://gitee.com/ziyangyang1318
