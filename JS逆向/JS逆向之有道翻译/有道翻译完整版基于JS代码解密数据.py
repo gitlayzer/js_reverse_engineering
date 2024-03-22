@@ -11,11 +11,8 @@
 import execjs
 import requests
 import time
-import base64
 import json
 from hashlib import md5
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import unpad
 
 
 # 获取session对象
