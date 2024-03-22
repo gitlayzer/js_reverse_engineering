@@ -28,14 +28,13 @@ def get_session():
 # 获取加密并编码的响应数据
 def get_encrypt_data(input_word):
     session = get_session()
-    word = input_word
     key = "fsdsogkndfokasodnaso"  # 固定值
     mysticTime = str(int(time.time()) * 1000)
     s = f'client=fanyideskweb&mysticTime={mysticTime}&product=webfanyi&key={key}'
     md5_obj = md5(s.encode())
     sign = md5_obj.hexdigest()
     data = {
-        "i": word,
+        "i": input_word,
         "from": "auto",
         "to": "",
         "dictResult": "true",
