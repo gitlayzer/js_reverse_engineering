@@ -110,4 +110,5 @@ headers = {
 
 print(sign,X_Timestamp)
 res = requests.get(url=url, params=params, headers=headers)
-print(res.text)
+data = json.loads(res.text)['data']['list']
+print(data)
