@@ -1,0 +1,31 @@
+1.null === (a = null === obj ||  n.sign) || void 0 === a ? void 0 : a.call(n, o)) || ""
+
+null === obj : false
+
+2.null === (a = false ||  n.sign) || void 0 === a ? void 0 : a.call(n, o)) || ""
+
+先执行 false ||  n.sign 在赋值给a
+所以 a=n.sing
+
+null === a || void 0 === a ? void 0 : a.call(n, o)) || ""
+
+3  null === a : false
+
+(void 0 === a ? void 0 : a.call(n, o)) || ""
+
+a.call(n, o) || ""
+
+a.call(n, o)
+-------------
+
+n = window.byted_acrawler 是一个对象，这个理暂时用 obj代替
+
+a = n.sign
+
+
+最终结果是 a.call(n, o)
+相当于 n.a(o)
+最终是
+window.byted_acrawler.sign(o)
+
+o 在控制台打印其实是个url 可以变换 {url: 'https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc'}
