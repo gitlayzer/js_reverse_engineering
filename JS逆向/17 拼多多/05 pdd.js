@@ -9,6 +9,7 @@ require("C:\\Users\\杨子洋\\PycharmProjects\\spiders\\JS逆向\\17 拼多多\
 //调度fbez
 
 function get_anti_content(){
+    // 使用加载器调用
     window.loader("fbeZ")
     window.lt['updateServerTime'](new Date().getTime())
     return window.dt()
