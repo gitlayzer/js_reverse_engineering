@@ -4,7 +4,7 @@
 require("C:\\Users\\杨子洋\\PycharmProjects\\spiders\\JS逆向\\17 拼多多\\01 env")
 require("C:\\Users\\杨子洋\\PycharmProjects\\spiders\\JS逆向\\17 拼多多\\02 mod1")
 require("C:\\Users\\杨子洋\\PycharmProjects\\spiders\\JS逆向\\17 拼多多\\02 mod2")
-require("C:\\Users\\杨子洋\\PycharmProjects\\spiders\\JS逆向\\17 拼多多\\loader")
+require("C:\\Users\\杨子洋\\PycharmProjects\\spiders\\JS逆向\\17 拼多多\\04 loader")
 
 //调度fbez
 

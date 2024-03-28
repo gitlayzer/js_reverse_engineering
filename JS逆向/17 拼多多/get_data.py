@@ -10,7 +10,7 @@
 """
 import execjs
 import requests
-anti_content = execjs.compile(open('pdd.js','r',encoding='utf-8').read()).call('get_anti_content')
+anti_content = execjs.compile(open('05 pdd.js', 'r', encoding='utf-8').read()).call('get_anti_content')
 print(anti_content)
 
 url = 'https://apiv2.pinduoduo.com/api/gindex/tf/query_tf_goods_info'
