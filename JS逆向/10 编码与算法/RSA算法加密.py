@@ -11,6 +11,7 @@
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_v1_5
 import base64
+
 # rsakey = RSA.generate(1024)
 # # 生成公私钥匙
 # with open('ras.public','wb') as f:
@@ -23,16 +24,17 @@ import base64
 
 # 加密
 data = "我喜欢你"
-with open(r"C:\Users\杨子洋\PycharmProjects\spiders\JS逆向\10 编码与算法\ras.public", mode="r") as f:
+with open(r"D:\JS逆向\spiders\JS逆向\10 编码与算法\ras.public", mode="r") as f:
     pk = f.read()
+    print('pk::::', pk)
     rsa_pk = RSA.importKey(pk)
+    print(rsa_pk)
     rsa = PKCS1_v1_5.new(rsa_pk)
 
     result = rsa.encrypt(data.encode("utf-8"))
     # 处理成b64方便传输
     b64_result = base64.b64encode(result).decode("utf-8")
     print(b64_result)
-
 
 # 解密
 data = "jt8sLAPW03rFiPO/AZmQy3qPa/oQHWcFdQZcGBxqkBipiwGrsOzvrqVFQxqgqKN8rQf70ki4giHSxk7/N7B50h2y893itQOZOYxZICUxDQfaMXE8TW3wU5SWi9zcTSwHA4x+TsWvZSdxq4R1JsJjkUl6WYl5zaUbRaL9T7nt1JM="
