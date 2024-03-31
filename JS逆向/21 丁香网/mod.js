@@ -218,6 +218,7 @@ location = {
                     )).join("&");
                     return r && console.log("sign", e, f),
                     o.sign = s(f),
+                        console.log(f),
                     o
                 };
                 window.f = f

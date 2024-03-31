@@ -42,17 +42,21 @@ server_time = json.loads(svc_res.text)['data']
 data2 = execjs.compile(open('mod.js','r',encoding='utf-8').read()).call('get_data')
 
 timeStamp = int(time.time()*1000)
-f = f"appSignKey=4bTogwpz7RzNO2VTFtW7zcfRkAE97ox6ZSgcQi7FgYdqrHqKB7aGqEZ4o7yssa2aEXoV3bQwh12FFgVNlpyYk2Yjm9d2EZGeGu3&noncestr=59030781&serverTimestamp={server_time}&timestamp={str(int(time.time())*1000)}"
-s = f"appSignKey=4bTogwpz7RzNO2VTFtW7zcfRkAE97ox6ZSgcQi7FgYdqrHqKB7aGqEZ4o7yssa2aEXoV3bQwh12FFgVNlpyYk2Yjm9d2EZGeGu3&noncestr=61359818&pageNum=1&pageSize=10&sectionCode=0&serverTimestamp={server_time}&timestamp={timeStamp}"
-sign = execjs.compile(open('1.js','r',encoding='utf-8').read()).call('get_sign',s)
 params = {
     'sectionCode': '0',
     'pageSize': '10',
-    'pageNum': '2',
+    'pageNum': '1',
     'serverTimestamp': timeStamp-2,
     'timestamp': timeStamp,
     'noncestr': '61359818',
-    'sign': sign
 }
+f = f"appSignKey=4bTogwpz7RzNO2VTFtW7zcfRkAE97ox6ZSgcQi7FgYdqrHqKB7aGqEZ4o7yssa2aEXoV3bQwh12FFgVNlpyYk2Yjm9d2EZGeGu3&noncestr=59030781&serverTimestamp={server_time}&timestamp={str(int(time.time())*1000)}"
+
+#s1 = f'appSignKey=4bTogwpz7RzNO2VTFtW7zcfRkAE97ox6ZSgcQi7FgYdqrHqKB7aGqEZ4o7yssa2aEXoV3bQwh12FFgVNlpyYk2Yjm9d2EZGeGu3&keyword={params["keyword"]}&noncestr={params["noncestr"]}&pageNum={params["pageNum"]}&pageSize={params["pageSize"]}&sectionCode=0&serverTimestamp={params["serverTimestamp"]}&timestamp={params["timestamp"]}'
+s = f"appSignKey=4bTogwpz7RzNO2VTFtW7zcfRkAE97ox6ZSgcQi7FgYdqrHqKB7aGqEZ4o7yssa2aEXoV3bQwh12FFgVNlpyYk2Yjm9d2EZGeGu3&noncestr=61359818&pageNum=1&pageSize=10&sectionCode=0&serverTimestamp={timeStamp-2}&timestamp={timeStamp}"
+# print(s1)
+print(s)
+sign = execjs.compile(open('1.js','r',encoding='utf-8').read()).call('get_sign',s)
+params['sign'] = sign
 response = requests.get('https://www.dxy.cn/bbs/newweb/case-bank/page-post-info', params=params, cookies=cookies, headers=headers)
 print(response.text)
