@@ -8,6 +8,8 @@
 @blog           : www.yangziyang.top
 @describe       : 
 """
+
+# 补充： 在js中 x=(1,2,3,4) 输出最后一个
 import requests
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
