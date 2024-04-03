@@ -16,13 +16,6 @@ import base64
 # 获取登录验证码
 session = requests.session()
 session.get('https://user.wangxiao.cn/login')
-# cookies = {
-#     'sessionId': '1712025134545',
-#     'mantis6894': '28380e35a7ea461b922f932f3c839361@6894',
-#     'Hm_lvt_86efc728d941baa56ce968a5ad7bae5f': '1712025136',
-#     '_bl_uid': '29lqLu4yhRarpakav9gXdp77apOC',
-#     'Hm_lpvt_86efc728d941baa56ce968a5ad7bae5f': '1712026223',
-# }
 
 headers = {
     'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -80,7 +73,7 @@ code_str = base64_api('dittoyang', 'Yang1318', 'code.png', 3)
 username = '18761661318'
 password = 'yang///1318'
 # 执行js获取加密密码
-encrypt_pwd = execjs.compile(open('1.js', 'r', encoding='utf-8').read()).call('decrypt_pwd', password)
+encrypt_pwd = execjs.compile(open('1.js', 'r', encoding='utf-8').read()).call('encrypt_pwd', password)
 # 构建请求体数据
 data = {
     'userName': username,
@@ -88,6 +81,28 @@ data = {
     'password': encrypt_pwd,
 }
 # 因为请求头是  'Content-Type': 'application/json;charset=UTF-8', 需要把data转换成json
-login_res=session.post('https://user.wangxiao.cn/apis//login/passwordLogin', headers=headers, data=json.dumps(data))
-print(login_res.text)
+login_res = session.post('https://user.wangxiao.cn/apis//login/passwordLogin', headers=headers, data=json.dumps(data))
+
 # {"code":0,"msg":"成功","data":{"userName":"pc_818594229","token":"55cded29-8971-4831-add5-951cf9a31fb9","headImg":null,"nickName":"187****1318","sign":"fangchan","isBindingMobile":"1","isSubPa":"0","userNameCookies":"+RWefRJN/AO42UAlo3lMdw==","passwordCookies":"vtN4tFw3qFe2bjVbvXevkw=="},"operation_date":"2024-04-02 11:51:49"}
+
+login_success_data = login_res.json().get("data")
+
+# 写cookie
+session.cookies['autoLogin'] = 'null'
+session.cookies['userInfo'] = json.dumps(login_success_data)  # 这里可以先放着. 如果请求数据不成功. 可以考虑添加urlencode(quote/quote_plus)
+session.cookies['token'] = login_success_data.get("token")
+
+session.cookies['UserCookieName'] = login_success_data.get("userName")
+session.cookies['OldUsername2'] = login_success_data.get("userNameCookies")
+session.cookies['OldUsername'] = login_success_data.get("userNameCookies")
+session.cookies['OldPassword'] = login_success_data.get("passwordCookies")
+session.cookies['UserCookieName_'] = login_success_data.get("userName")
+session.cookies['OldUsername2_'] = login_success_data.get("userNameCookies")
+session.cookies['OldUsername_'] = login_success_data.get("userNameCookies")
+session.cookies['OldPassword_'] = login_success_data.get("passwordCookies")
+session.cookies[login_success_data.get('userName') + "_exam"] = login_success_data.get("sign")
+
+q_data = {"practiceType": "1", "sign": "jz2", "subsign": "9ddd65153fc1d9895810", "day": "20240403"}
+q_url = 'https://ks.wangxiao.cn/practice/listQuestions'
+q_res = session.post(url=q_url, data=json.dumps(q_data), headers=headers)
+print(q_res.text)
