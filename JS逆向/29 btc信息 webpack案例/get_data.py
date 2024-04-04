@@ -1,4 +1,6 @@
 # coding: utf-8
+import time
+
 import requests
 import execjs
 
@@ -16,22 +18,22 @@ headers = {
     'sec-fetch-site': 'cross-site',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
 }
-
+time_str = str(int(time.time()*1000))
 params = {
     'pages': '1,1',
     'sizes': '100,100',
     'subject': 'market_cap',
     'language': 'zh_CN',
-    'timestamp': '1712240648557',
+    'timestamp': time_str,
     # 'code': '8ea5f0ee4df771005f52ad3b7e6688a6',
     'platform': 'web_pc',
     'v': '0.1.0',
     'legal_currency': 'USD',
     'international': '1',
 }
-with open(r'btc.js', 'r', encoding='utf-8') as f:
+with open(r'D:\JS逆向\spiders\JS逆向\29 btc信息 webpack案例\btc.js', 'r', encoding='utf-8') as f:
     JS = execjs.compile(f.read())
-code = JS.call('getCode')
+code = JS.call('getCode',time_str)
 params['code'] = code
 response = requests.get('https://api.mytokenapi.com/ticker/currencyranklist', params=params, headers=headers)
 print(response.text)

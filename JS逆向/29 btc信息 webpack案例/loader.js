@@ -286,7 +286,7 @@
     }
     ,
     t.p = "https://cdn.mytoken.org/_next/",
-    function() {
+    !function() {
         var c = {
             2272: 0
         };
