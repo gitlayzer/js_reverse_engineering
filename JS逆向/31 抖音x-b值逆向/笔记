@@ -1,0 +1,6 @@
+条件断点
+_0xc26b5e.openArgs[1].search("aweme/v1/web/aweme/post/?")>=0
+日志断点
+_0x2458f0['apply'](_0xc26b5e, _0x1f1790)
+判断x-b值的生成，确定生成函数，条件断点
+_0x2458f0['apply'](_0xc26b5e, _0x1f1790).length == 28
