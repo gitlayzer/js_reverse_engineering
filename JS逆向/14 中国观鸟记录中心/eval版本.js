@@ -77,12 +77,11 @@ function get_data(b){
         b = encrypt.encryptUnicodeLong(e);
         //var f = MD5(e + d + c);
         var f = crypto.createHash("md5").update(e + d + c).digest('hex');
-        var headers = {
-            timestamp:c,
-            requestId:d,
-            sign:f
+    return {
+            timestamp: c,
+            requestId: d,
+            sign: f
         }
-        return headers
 }
 
 
