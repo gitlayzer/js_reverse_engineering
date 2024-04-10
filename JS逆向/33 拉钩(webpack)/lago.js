@@ -38,15 +38,16 @@ function getEncryptData(s) {
 decryptResData = function (t) {
     let kt = CryptoJs.enc.Utf8.parse('=QW/zcdxH=JUMXJkYCiAJxNXr4XLDnWq');
     t = CryptoJs.AES.decrypt(t, kt, {
-        iv: {
-            "words": [
-                1664431416,
-                1198600281,
-                1363882577,
-                1433161059
-            ],
-            "sigBytes": 16
-        },
+        // iv: {
+        //     "words": [
+        //         1664431416,
+        //         1198600281,
+        //         1363882577,
+        //         1433161059
+        //     ],
+        //     "sigBytes": 16
+        // },
+        iv : CryptoJs.enc.Utf8.parse("c558Gq0YQK2QUlMc"),
         mode: CryptoJs.mode.CBC,
         padding: CryptoJs.pad.Pkcs7
     }).toString(CryptoJs.enc.Utf8);
