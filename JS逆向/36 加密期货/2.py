@@ -39,5 +39,5 @@ response = requests.get('https://capi.coinglass.com/api/openInterest/ex/info', p
 user = response.headers.get('user')
 encrypt_data = response.json()['data']
 url = "/api/openInterest/ex/info"
-plain_data = execjs.compile(open("1.js", "r", encoding="utf-8").read()).call("get_r", url, user, encrypt_data)
+plain_data = execjs.compile(open("zlib版本.js", "r", encoding="utf-8").read()).call("get_r", url, user, encrypt_data)
 print(plain_data)
